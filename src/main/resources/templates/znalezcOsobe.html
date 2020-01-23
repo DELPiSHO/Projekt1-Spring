@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wyszukaj osoby</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+        h1 {
+            font-family: Calibri;
+            font-size: 25pt;
+            font-style: normal;
+            font-weight: bold;
+            color:SlateBlue;
+            text-align: center;
+            text-decoration: underline
+        }
+        body {
+            background: aquamarine;
+        }
+        label {
+            display: inline-block;
+            width: 6em;
+            padding: 0 1em;
+            text-align: right;
+        }
+        label, input {
+            color: #333;
+            font: 14px/20px Calibri;
+        }
+        span.validationError {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+        <h1>Wyszukaj osoby</h1>
+        <form action="#" th:action="@{/listaOsob/filter}" th:object="${osoba}" method="post">
+            <label for="email">Email:</label>
+            <input type="text" th:field="*{email}" id="email" placeholder="proszę podać email">
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('email')}"
+                  th:errors="*{email}">Email Error
+    </span>
+            <br/><br/>
+<input type="submit" value="Wyszukaj podane osoby">
+        </form>
+</body>
+</html>

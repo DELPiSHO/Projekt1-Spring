@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edytowanie osoby</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+        h1 {
+            font-family: Calibri;
+            font-size: 25pt;
+            font-style: normal;
+            font-weight: bold;
+            color:SlateBlue;
+            text-align: center;
+            text-decoration: underline
+        }
+        span.validationError {
+            color: blue;
+        }
+        body {
+            background: aquamarine;
+        }
+        label {
+            display: inline-block;
+            width: 6em;
+            padding: 0 1em;
+            text-align: right;
+        }
+        label, input {
+            color: #333;
+            font: 14px/20px Calibri;
+        }
+    </style>
+</head>
+<body>
+<h1>Edytowanie osoby</h1>
+<form action="#" th:action="@{/listaOsob/edytuj}" th:object="${osoba}" method="post" >
+    <div th:if="${#fields.hasErrors()}">
+          <span class="validationError">
+             Proszę poprawcie wszystkie błędy!
+          </span>
+    </div>
+
+    <input type="hidden" th:field="${osoba.id}" id="id">
+
+    <label for="imie">Imie: </label>
+    <input type="text" th:field="*{imie}" id="imie" placeholder="Imię">
+    <span class="validationError"
+          th:if="${#fields.hasErrors('imie')}"
+          th:errors="*{imie}">Name Error
+    </span>
+    <br/><br/>
+
+    <label for="nazwisko">Nazwisko: </label>
+    <input type="text" th:field="*{nazwisko}" id="nazwisko" placeholder="Nazwisko">
+    <span class="validationError"
+          th:if="${#fields.hasErrors('nazwisko')}"
+          th:errors="*{nazwisko}">Name Error
+    </span>
+    <br/><br/>
+
+    <label for="email">Email: </label>
+    <input type="text" th:field="*{email}" id="email" placeholder="Email">
+    <span class="validationError"
+          th:if="${#fields.hasErrors('email')}"
+          th:errors="*{email}">Email Error
+    </span>
+    <br/>
+    <br/>
+
+    <label for="plec">Płeć: </label>
+    <input type="text" th:field="*{plec}" id="plec" placeholder="Plec">
+    <span class="validationError"
+          th:if="${#fields.hasErrors('plec')}"
+          th:errors="*{plec}">Card Type Error
+    </span>
+    <br/><br/>
+
+    <label for="typKartyKredytowej">Typ karty kredytowej: </label>
+    <input type="text" th:field="*{typKartyKredytowej}" id="typKartyKredytowej" placeholder="Typ karty">
+    <span class="validationError"
+          th:if="${#fields.hasErrors('typKartyKredytowej')}"
+          th:errors="*{typKartyKredytowej}">Card Type Error
+    </span>
+    <br/><br/>
+
+    <label for="numerKartyKredytowej">Numer karty kredytowej:</label>
+    <input type="text" th:field="*{numerKartyKredytowej}" id="numerKartyKredytowej" placeholder="Numer karty">
+    <span class="validationError"
+          th:if="${#fields.hasErrors('numerKartyKredytowej')}"
+          th:errors="*{numerKartyKredytowej}">Card Number Error
+    </span>
+    <br/><br/>
+
+    <input type="submit" value="Zastosuj zmiany">
+</form>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista osób</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+        h3 {
+            font-family: Calibri;
+            font-size: 25pt;
+            font-style: normal;
+            font-weight: bold;
+            color: darkgreen;
+            text-align: center;
+            text-decoration: underline;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even){
+            background-color: #f2f2f2
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        ul {
+             list-style-type: none;
+             margin: 0;
+             padding: 0;
+             overflow: hidden;
+             background-color: darkgreen;
+         }
+        li {
+            float: left;
+        }
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 20px 16px;
+            text-decoration: none;
+        }
+        li a:hover {
+            background-color: #111;
+        }
+        h4 {
+            position: page;
+            left: 0; bottom: 0;
+            padding: 10px;
+            background: aliceblue;
+            color: limegreen;
+            width: 100%;
+        }
+        </style>
+</head>
+<body>
+<div th:switch="${osoby}">
+    <h2 th:case="null">Nie ma osób</h2>
+    <div th:case="*">
+            <h3>Baza danych osób</h3>
+        <ul>
+            <li class="menu"><a class="menu" href="/listaOsob/">Strona główna</a></li>
+            <li class="menu"><a class="menu" href="/listaOsob/new">Dodaj nową osobę</a></li>
+            <li class="menu"><a class="menu" href="/listaOsob/find">Wyszukaj osoby</a></li>
+            <li class="menu"><a class="menu" href="/listaOsob/import">Importuj z pliku CSV</a></li>
+            <li class="menu"><a class="menu" href="/listaOsob/export">Eksportuj w plik CSV</a></li>
+
+        </ul>
+        <table class="listaOsob">
+            <thead>
+            <tr>
+                <th>Imie</th>
+                <th>Nazwisko</th>
+                <th>Email</th>
+                <th>Płeć</th>
+                <th>Typ karty kredytowej</th>
+                <th>Numer karty kredytowej</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="osoba : ${osoby}">
+                <td th:text="${osoba.imie}"></td>
+                <td th:text="${osoba.nazwisko}"></td>
+                <td th:text="${osoba.email}"></td>
+                <td th:text="${osoba.plec}"></td>
+                <td th:text="${osoba.typKartyKredytowej}"></td>
+                <td th:text="${osoba.numerKartyKredytowej}"></td>
+                <td><a th:href="@{/listaOsob/edit/{id}(id=${osoba.id})}">Edit</a></td>
+                <td><a th:href="@{/listaOsob/delete/{id}(id=${osoba.id})}">Delete</a></td>
+                <td><a th:href="@{/listaOsob/json/{id}(id=${osoba.id})}">Pokaż jako JSON</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<h4>Projekt 1, Yauheni Dzianisau (c)</h4>
+</body>
+</html>

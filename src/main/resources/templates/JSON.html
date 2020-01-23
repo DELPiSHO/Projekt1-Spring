@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>JSON</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+        body {
+            background: aquamarine;
+        }
+        h1 {
+            font-family: Calibri;
+            font-size: 25pt;
+            font-style: normal;
+            font-weight: bold;
+            color: darkgreen;
+            text-align: center;
+            text-decoration: underline;
+        }
+        code {
+        border: blue solid 2px;
+        background-color: #ff0;
+        }
+        li {
+            float: left;
+        }
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 20px 16px;
+            text-decoration: none;
+            background-color: darkgreen;
+        }
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+<body>
+<h1>JSON</h1>
+<code th:text="${JSON}"></code>
+<br/><br/>
+<li class="menu"><a class="menu" href="/listaOsob/">Strona główna</a></li>
+</body>
+</html>
